@@ -45,7 +45,7 @@ public class EmulationServiceImpl implements EmulationService {
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException("Машина с таким id не найдена"));
 
-        return new StatusDto(machine.getIsWorking());
+        return new StatusDto(Boolean.TRUE.equals(machine.getIsWorking()) ? 1 : 0);
     }
 
     private void checkDoor() {
