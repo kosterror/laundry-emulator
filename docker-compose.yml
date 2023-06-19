@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  backend:
+    build: '.'
+    container_name: laundry-em-back
+    ports:
+      - '8080:8080'
+    depends_on:
+      - database
+  database:
+    container_name: laundry-em-db
+    image: postgres:alpine
+    ports:
+      - '5430:5432'
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
