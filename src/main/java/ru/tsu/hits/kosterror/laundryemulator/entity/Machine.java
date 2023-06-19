@@ -22,7 +22,7 @@ public class Machine {
     private MachineType type;
 
     @Column(nullable = false)
-    private boolean isWorking;
+    private Boolean isWorking;
 
     private LocalDateTime startTime;
 

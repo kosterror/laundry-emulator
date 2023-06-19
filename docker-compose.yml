@@ -8,6 +8,8 @@ services:
       - '8080:8080'
     depends_on:
       - database
+    environment:
+      - SHOW_SQL=false
   database:
     container_name: laundry-em-db
     image: postgres:alpine

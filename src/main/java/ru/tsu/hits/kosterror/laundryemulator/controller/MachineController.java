@@ -1,6 +1,7 @@
 package ru.tsu.hits.kosterror.laundryemulator.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.tsu.hits.kosterror.laundryemulator.dto.CreateUpdateMachineDto;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/machines")
 @RequiredArgsConstructor
+@Tag(name = "CRUD машин")
 public class MachineController {
 
     private final MachineService machineService;

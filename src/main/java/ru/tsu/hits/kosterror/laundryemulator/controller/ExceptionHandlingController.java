@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.tsu.hits.kosterror.laundryemulator.dto.ApiError;
+import ru.tsu.hits.kosterror.laundryemulator.exception.ConflictException;
 import ru.tsu.hits.kosterror.laundryemulator.exception.NotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,6 +64,20 @@ public class ExceptionHandlingController {
         return new ResponseEntity<>(error, httpStatus);
     }
 
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ApiError> handleConflictException(HttpServletRequest request,
+                                                            ConflictException exception
+    ) {
+        logError(request, exception);
+        HttpStatus httpStatus = HttpStatus.CONFLICT;
+
+        ApiError error = new ApiError(
+                httpStatus.value(),
+                exception.getMessage()
+        );
+
+        return new ResponseEntity<>(error, httpStatus);
+    }
 
 
     private void logError(HttpServletRequest request, Exception exception) {

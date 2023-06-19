@@ -13,7 +13,7 @@ public class MachineMapper {
                 .builder()
                 .id(entity.getId())
                 .type(entity.getType())
-                .isWorking(entity.isWorking())
+                .isWorking(entity.getIsWorking())
                 .startTime(entity.getStartTime())
                 .workTime(entity.getWorkTime())
                 .build();
